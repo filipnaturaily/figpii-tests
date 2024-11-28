@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import Script from 'next/script';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -24,8 +23,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const figPiiScript = `!function(w,d,u){var n=d.createElement('script');n.crossOrigin='anonymous',n.async='async',n.src=u,d.head.append(n),w._fpEvent=w._fpEvent||[]}(window,document,'https://tracking-cdn.figpii.com/c6e82ca4f660f584d650c7ba6727d464.js');`;
-
   return (
     <html lang='en'>
       <body
@@ -33,9 +30,6 @@ export default function RootLayout({
       >
         {children}
       </body>
-      {/* FigPii Asynchronous Tracking Code */}
-      <Script id='figpii' dangerouslySetInnerHTML={{ __html: figPiiScript }} />
-      {/* End FigPii Asynchronous Tracking Code */}
     </html>
   );
 }
